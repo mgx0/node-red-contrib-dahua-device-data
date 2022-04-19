@@ -29,10 +29,10 @@ module.exports = function (RED) {
             node.status({fill: "yellow", shape: "dot", text: "disconnected"});
         });
 
-        dahua.on('alarm', function (code, action, index) {
+        dahua.on('alarm', function (code, action, index, data) {
             node.send({
                 topic: code + '/' + index + '/' + action,
-                payload: action,
+                payload: data,
                 index,
                 code
             });
